@@ -1,6 +1,9 @@
 import 'reflect-metadata';
 import { BackendApp } from './BackendApp';
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 void (async () => {
 	try {
 		await new BackendApp().start();

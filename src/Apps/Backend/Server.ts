@@ -9,11 +9,13 @@ import context from './Context/Context';
 import Context from './Context/ContextContract';
 
 export class ExpressYogaServer {
+    private readonly url: string;
     private readonly port: string;
     private readonly expressApp: Express;
     public readonly server: Server;
 
-    constructor(port: string) {
+    constructor(url: string,port: string) {
+        this.url        = url;
         this.port       = port;
         this.expressApp = express();
 
@@ -31,7 +33,7 @@ export class ExpressYogaServer {
     async start(): Promise<void> {
         return new Promise(resolve => {
             this.server.listen(this.port, () => {
-                console.log(`Server is running on http://localhost:${this.port}/graphql`);
+                console.log(`Server is running on ${this.url}:${this.port}/graphql`);
                 resolve();
             });
         });

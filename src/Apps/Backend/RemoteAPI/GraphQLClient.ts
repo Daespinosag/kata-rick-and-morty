@@ -1,5 +1,7 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 class GraphQLClient {
-    private readonly endpoint: string = 'https://rickandmortyapi.com/graphql';
     private readonly headers: HeadersInit  = {
         'Content-Type'  : 'application/json',
         'Accept'        : 'application/json',
@@ -7,8 +9,8 @@ class GraphQLClient {
 
     async query(query: string): Promise<any> {
         const { default: fetch } = await import('node-fetch')
-        const response = await fetch(this.endpoint, {
-            method: 'POST',
+        const response = await fetch(`${process.env.REMOTE_URL}/${process.env.REMOTE_PROTOCOL}`, {
+            method: process.env.REMOTE_METHOD,
             headers: this.headers,
             body: JSON.stringify({ query }),
         });

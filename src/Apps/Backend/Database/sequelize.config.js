@@ -1,28 +1,33 @@
 require('ts-node/register');
 
+const dotenv = require('dotenv');
+
+module.exports = dotenv.config();
+
+
 module.exports = {
   development: {
-    username: "postgres",
-    password: "1024",
-    database: "rick_morty",
-    host: "127.0.0.1",
+    username: process.env.DATABASE_USER ?? "DEFINE_DATABASE_USER",
+    password: process.env.DATABASE_PASSWORD ?? "DEFINE_DATABASE_PASSWORD",
+    database: process.env.DATABASE_NAME ?? 'DEFINE_DATABASE_NAME',
+    host: process.env.DATABASE_HOST ?? 'DEFINE_DATABASE_HOST',
     dialect: "postgres",
-    port: "5432",
+    port: process.env.DATABASE_PORT ?? "5432",
   },
   test: {
-    username: "postgres",
-    password: "1024",
-    database: "rick_morty",
-    host: "127.0.0.1",
+    username: process.env.DATABASE_USER ?? "DEFINE_DATABASE_USER",
+    password: process.env.DATABASE_PASSWORD ?? "DEFINE_DATABASE_PASSWORD",
+    database: process.env.DATABASE_NAME ?? 'DEFINE_DATABASE_NAME',
+    host: process.env.DATABASE_HOST ?? 'DEFINE_DATABASE_HOST',
     dialect: "postgres",
-    port: 5433,
+    port: process.env.DATABASE_PORT ?? "5432",
   },
   production: {
-    username: "postgres",
-    password: "1024",
-    database: "rick_morty",
-    host: "127.0.0.1",
+    username: process.env.DATABASE_USER ?? "DEFINE_DATABASE_USER",
+    password: process.env.DATABASE_PASSWORD ?? "DEFINE_DATABASE_PASSWORD",
+    database: process.env.DATABASE_NAME ?? 'DEFINE_DATABASE_NAME',
+    host: process.env.DATABASE_HOST ?? 'DEFINE_DATABASE_HOST',
     dialect: "postgres",
-    port: 5433,
+    port: process.env.DATABASE_PORT ?? "5432",
   }
 };

@@ -15,6 +15,7 @@
     - [Available Filters](#available-filters)
     - [Pagination](#pagination)
     - [ A look at the result](#a-look-at-the-result)
+- [E/R Model](#er-model)
 
 
 ## Description
@@ -74,9 +75,9 @@ Copy the `.env.example` file to `.env` and adjust the environment variables acco
 
 4. **Run database migrations and seeders: **(make sure you have a database created)
     ```bash
-    npx sequelize-cli db:migrate
+    npm run database:migrate
 
-    npx sequelize-cli db:seed:all
+    npm run database:seed
     ```
 
 5. **Start the application:**

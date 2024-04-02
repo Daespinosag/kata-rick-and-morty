@@ -24,10 +24,10 @@
 		"build:tsc": "tsc -p tsconfig.prod.json",
 		"build:di": "copy 'src/**/*.{json,yaml,html,png}' dist/src",
 		"build:clean": "rm -r dist; exit 0",
-		"database:migrate" : "npx sequelize-cli db:migrate",
-		"database:seed" : "npx sequelize-cli db:seed:all",
-		"database:fresh" : "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate",
-		"database:fresh:seed" : "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate && npx npx sequelize-cli db:seed:all"
+		"database:migrate": "npx sequelize-cli db:migrate",
+		"database:seed": "npx sequelize-cli db:seed:all",
+		"database:fresh": "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate",
+		"database:fresh:seed": "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate && npx npx sequelize-cli db:seed:all"
 	},
 	"dependencies": {
 		"@types/redis": "^4.0.11",
@@ -70,6 +70,7 @@
 		"@types/compression": "^1.7.5",
 		"@types/cookie-parser": "^1.4.6",
 		"@types/cookie-session": "^2.0.48",
+		"@types/dotenv": "^8.2.0",
 		"@types/errorhandler": "1.5.3",
 		"@types/express": "^4.17.21",
 		"@types/jest": "^29.5.11",

@@ -14,6 +14,7 @@ class CharactersResolver {
         args: { page?: number; filter?: Record<string, string> }, 
         context: Context
     ): Promise<{ info: PageInfo, results: any }> {
+        await context.cache.repository.delByPattern('characters:*');
 
         const sourceStrategyContext = {
             resource: 'characters',

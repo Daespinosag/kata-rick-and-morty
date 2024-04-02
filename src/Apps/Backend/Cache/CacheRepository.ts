@@ -1,5 +1,7 @@
 import { createClient, RedisClientType } from 'redis';
 
+import dotenv from 'dotenv';
+dotenv.config();
 interface CacheContractRepository {
     get(key: string): Promise<string | null>;
     set(key: string, value: string, ttl?: number): Promise<void>;
@@ -11,7 +13,7 @@ class CacheRepository implements CacheContractRepository {
 
     constructor() {
         this.client = createClient({
-            url: 'redis://localhost:6379'
+            url: `${process.env.CACHE_URL}:${process.env.CACHE_PORT}` //'redis://localhost:6379'
         });
         this.client.on('error', (err) => console.log('Redis Client Error', err));
         this.initialize();

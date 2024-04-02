@@ -4,8 +4,7 @@ export class BackendApp {
 	server?: ExpressYogaServer;
 
 	async start(): Promise<void> {
-		const port = process.env.PORT ?? '8090';
-		this.server = new ExpressYogaServer(port);
+		this.server = new ExpressYogaServer(process.env.URL || "http://localhost", process.env.PORT || "8080");
 	
 		return this.server.start();
 	}
