@@ -1,0 +1,7 @@
+{
+	"mooc_backend": {
+		"paths": ["tests/apps/backend/features/**/*.feature"],
+		"requireModule": ["ts-node/register"],
+		"require": ["tests/apps/backend/features/step_definitions/*.steps.ts"]
+	}
+}

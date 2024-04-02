@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+		"module": "NodeNext",
+		"esModuleInterop": true,
+		"target": "ES2022",
+		"noImplicitAny": true,
+		"moduleResolution": "NodeNext",
+		"sourceMap": false,
+		"rootDir": ".",
+		"strict": true,
+		"noEmit": false,
+		"resolveJsonModule": true,
+		"noUnusedLocals": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"outDir": "./dist"
+	},
+	"include": ["src/**/**.ts", "tests/**/**.ts"],
+	"exclude": ["node_modules"]
+}

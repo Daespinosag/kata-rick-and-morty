@@ -1,0 +1,109 @@
+{
+	"name": "kata-rick-and-morty",
+	"version": "1.0.0",
+	"description": "",
+	"type": "commonjs",
+	"repository": {
+		"url": "https://github.com/Daespinosag/kata-rick-and-morty"
+	},
+	"license": "",
+	"engines": {
+		"node": ">=18.0.0",
+		"npm": ">=10.0.0"
+	},
+	"scripts": {
+		"dev": "NODE_ENV=dev ts-node-dev --ignore-watch node_modules  ./src/Apps/Backend/Start.ts",
+		"lint": "eslint --ignore-path .gitignore .",
+		"lint:fix": "npm run lint -- --fix",
+		"test": "npm run test:unit && npm run test:features",
+		"test:unit": "cross-env NODE_ENV=test jest",
+		"start:backend": "NODE_ENV=production node dist/src/Apps/Backend/Start",
+		"test:features": "npm run test:backend:features",
+		"test:backend:features": "cross-env NODE_ENV=test cucumber-js -p mooc_backend",
+		"build": "npm run build:clean && npm run build:tsc && npm run build:di",
+		"build:tsc": "tsc -p tsconfig.prod.json",
+		"build:di": "copy 'src/**/*.{json,yaml,html,png}' dist/src",
+		"build:clean": "rm -r dist; exit 0",
+		"database:migrate" : "npx sequelize-cli db:migrate",
+		"database:seed" : "npx sequelize-cli db:seed:all",
+		"database:fresh" : "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate",
+		"database:fresh:seed" : "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate && npx npx sequelize-cli db:seed:all"
+	},
+	"dependencies": {
+		"@types/redis": "^4.0.11",
+		"body-parser": "^1.20.2",
+		"bodybuilder": "^2.5.1",
+		"bson": "^6.2.0",
+		"class-transformer": "^0.5.1",
+		"class-validator": "^0.14.1",
+		"compression": "^1.7.4",
+		"cookie-parser": "^1.4.6",
+		"cookie-session": "^2.0.0",
+		"dotenv": "^16.4.5",
+		"errorhandler": "^1.5.1",
+		"express": "^4.19.2",
+		"express-promise-router": "^4.1.1",
+		"express-validator": "^7.0.1",
+		"glob": "^10.3.10",
+		"graphql": "^16.8.1",
+		"graphql-http": "^1.22.0",
+		"graphql-yoga": "^5.2.0",
+		"helmet": "^7.1.0",
+		"http-status": "^1.7.3",
+		"ioredis": "^5.3.2",
+		"node-cron": "^3.0.3",
+		"node-dependency-injection": "^2.7.3",
+		"node-fetch": "^3.3.2",
+		"nunjucks": "^3.2.4",
+		"pg": "^8.11.3",
+		"pg-hstore": "^2.3.4",
+		"redis": "^4.6.13",
+		"rickmortyapi": "^2.3.0",
+		"sequelize": "^6.37.1",
+		"sequelize-cli": "^6.6.2",
+		"winston": "^3.11.0"
+	},
+	"devDependencies": {
+		"@cucumber/cucumber": "^10.0.1",
+		"@faker-js/faker": "^8.3.1",
+		"@graphql-tools/schema": "^10.0.3",
+		"@types/compression": "^1.7.5",
+		"@types/cookie-parser": "^1.4.6",
+		"@types/cookie-session": "^2.0.48",
+		"@types/errorhandler": "1.5.3",
+		"@types/express": "^4.17.21",
+		"@types/jest": "^29.5.11",
+		"@types/node": "^18.19.26",
+		"@types/node-cron": "^3.0.11",
+		"@types/nunjucks": "^3.2.6",
+		"@types/sequelize": "^4.28.20",
+		"@types/supertest": "^2.0.16",
+		"@typescript-eslint/eslint-plugin": "^6.13.2",
+		"@typescript-eslint/parser": "^6.13.2",
+		"cross-env": "^7.0.3",
+		"eslint": "^8.55.0",
+		"eslint-import-resolver-typescript": "^3.6.1",
+		"eslint-plugin-import": "^2.29.0",
+		"husky": "^8.0.3",
+		"jest": "^29.7.0",
+		"lint-staged": "15.2.0",
+		"nodemon": "^3.1.0",
+		"prettier": "^3.1.0",
+		"supertest": "^6.3.3",
+		"ts-jest": "^29.1.1",
+		"ts-node": "^10.9.2",
+		"ts-node-dev": "^2.0.0",
+		"typescript": "^5.4.3"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"{src,tests}/**/*.ts": [
+			"npm run lint:fix",
+			"git add"
+		]
+	}
+}
