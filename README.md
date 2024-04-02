@@ -141,3 +141,7 @@ To navigate through pages, you can modify the value of the `page` parameter in y
 ### A look at the result
 
 ![Preview](preview.png)
+
+### E/R Model
+
+![E/R](ER.png)
