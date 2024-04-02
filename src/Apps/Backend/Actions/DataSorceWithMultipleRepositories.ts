@@ -54,7 +54,7 @@ export class LocalDataSourceStrategy implements DataSourceContractStrategy {
         try {
             const data = await sourceStrategyContext.getter.local(
                 sourceStrategyContext.data.formatted_arguments.page, 
-                sourceStrategyContext.data.formatted_arguments.filter
+                sourceStrategyContext.data.formatted_arguments.filters
             );
 
             if (data.results.length >= 20 ) {
@@ -67,7 +67,7 @@ export class LocalDataSourceStrategy implements DataSourceContractStrategy {
             }
 
             const countRemote = await sourceStrategyContext.count.remote(
-                sourceStrategyContext.data.formatted_arguments.filter
+                sourceStrategyContext.data.input_arguments.filter
             );
 
             if (data.info.count >= countRemote.info.count) {
